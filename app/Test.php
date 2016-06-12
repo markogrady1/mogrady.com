@@ -2,7 +2,7 @@
 
 class Test {
 	function __construct() {
-		echo "this is a test";
+		echo "<br><br><h1 style='text-align:center'>This site is under construction.</h1>";
 	}
 }
 
