@@ -54,14 +54,14 @@ $msg = new HomeController("construction");
 		<?php
 
 		$m = $msg->getState();
-		$repoData = $msg->getCurlData();
+		$repoData = $msg->getCurlDataArray(true);
         $str = "";
+        if(!is_string($repoData))
         foreach($repoData as $key => $el) {
            $str = "<a target=__blank href=" .$repoData[$key]["html_url"] . ">" . $repoData[$key]["name"]."</a>"; ?>
 
             <li><?php echo $str ?></li>
        <?php }
-//        echo $str
 		 ?>
             </ul></div>
 		 	<script src="public/js/index.js"></script>
