@@ -1,0 +1,29 @@
+.widget-list {list-style: none; width: 400px;}
+
+.widget-list li {
+    position: relative;
+    display: block;
+    padding: 6px 64px 6px 30px;
+    font-size: 14px;
+    border-top: 1px solid #e5e5e5;
+    border-right:  1px solid #e5e5e5;
+    border-left:  1px solid #e5e5e5;
+}
+
+.widget-list li:hover { background-color: #eee; cursor: pointer; }
+
+.widget-list li span.language{ float: right; }
+.icon { color: #444; padding-right: 10px; }
+
+.language { color: #444; }
+.repo-list-header { position: relative; background-color: #F6F9FD}
+/*.list-title {  font-size: 1.5em; position: absolute; top: 10px;  width: 300px}*/
+.avatar-img { border-radius: 50px; padding: 3px; background-color: #fff;border: 1px solid #a9a9a9}
+@media only screen and (max-width : 519px){
+    .widget-list {
+        list-style: none;
+        width: 400px;
+        padding:0;
+        margin:0;
+    }
+}

@@ -147,6 +147,7 @@ img.main-home-img {
 	width: 60%;
 	margin: 10px auto;
 }
+
 .my-image {
 	background-color:#fff;
 	border: 1px solid #999;
@@ -178,7 +179,7 @@ img.main-home-img {
 }
 
 .repo-list {
-    width: 60%;
+    width: 45%;
     margin: 0 auto;
     list-style: none;
     padding: 0;
@@ -265,6 +266,9 @@ img.main-home-img {
 
 
 @media only screen and (max-width : 519px){
+    .repo-list {
+        margin:0;
+    }
 .bars{
 	width: 24px;
 	height: 4px;

@@ -2,6 +2,8 @@
 
 class Curl {
 
+
+
 	public function  getCurlData($url) {
 	
 		$curl = curl_init($url);
@@ -17,9 +19,6 @@ class Curl {
 		if ($info['http_code'] == 200) {
 
 			curl_close($curl);
-
-			//$data = json_decode($response, true);
-
 			if (empty($response)) {
 
 				return false;

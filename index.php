@@ -2,8 +2,9 @@
 require __DIR__.'/vendor/autoload.php';
 
 use App\Controllers\HomeController;
-use App\Lib\Curl;
-$msg = new HomeController("construction");
+use App\Lib\Plugin;
+
+$msg = new Plugin("markogrady1", 15, "My Repos");
 ?>
 <html>
 <head>
@@ -16,6 +17,8 @@ $msg = new HomeController("construction");
 	<meta name="Viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 	<script   src="https://code.jquery.com/jquery-3.0.0.min.js"   integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0="   crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="public/css/main.css">
+    <link rel="stylesheet" type="text/css" href="public/css/widgit.css">
+
 <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
 	<link rel="shortcut icon" href="public/img/pro_pic_30_30.ico">
 </head>
@@ -49,21 +52,15 @@ $msg = new HomeController("construction");
 			</div>
 	<div class="clear"></div>
 		</div>
-        <div><ul class="repo-list">
+        <div class="repo-list">
                 <h2>GitHub repos</h2>
 		<?php
 
-		$m = $msg->getState();
-		$repoData = $msg->getCurlDataArray(true);
-        $str = "";
-        if(!is_string($repoData))
-        foreach($repoData as $key => $el) {
-           $str = "<a target=__blank href=" .$repoData[$key]["html_url"] . ">" . $repoData[$key]["name"]."</a>"; ?>
 
-            <li><?php echo $str ?></li>
-       <?php }
-		 ?>
-            </ul></div>
+		$repoData = $msg->getData(true);
+        echo $repoData;
+?>
+            </div>
 		 	<script src="public/js/index.js"></script>
 
 </body>
