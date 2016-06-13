@@ -2,7 +2,7 @@
 require __DIR__.'/vendor/autoload.php';
 
 use App\Controllers\HomeController as Home;
-
+$msg = new Home("construction");
 ?>
 <html>
 <head>
@@ -44,12 +44,16 @@ use App\Controllers\HomeController as Home;
 				<img src="public/img/moi_pic.jpg" alt="" class="my-image"/>
 			</div>
 			<div class="set-2">
-				<div class="intro"><p class="intro-para">My name is Mark O Grady. I am a recent Computer Science graduate. Also first and foremost, I am very passionate	about sofware development. I find it absolutely fascinating that almost anything is possible, with the implementation of a bit of code.</p><p class="intro-para">I am currently freelancing my services on various projects. I am also a Git fanatic, and my acccount can be found <a href="https://github.com/markogrady1" target="__blank">here </a>on GitHub.</p></div>
+				<div class="intro"><p class="intro-para"><?php
+				
+				echo $msg->getIntroduction(1);
+				
+				?></p><p class="intro-para">I am currently freelancing my services on various projects. I am also a Git fanatic, and my acccount can be found <a href="https://github.com/markogrady1" target="__blank">here </a>on GitHub.</p></div>
 			</div>
 	<div class="clear"></div>
 		</div>
 		<?php 
-		$msg = new Home("construction");
+		
 		$m = $msg->getMessage();
 		echo $m;
 		 ?>
