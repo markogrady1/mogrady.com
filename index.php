@@ -1,7 +1,8 @@
 <?php 
 require __DIR__.'/vendor/autoload.php';
 
-use App\Test;
+use App\Controllers\HomeController as Home;
+
 ?>
 <html>
 <head>
@@ -48,7 +49,9 @@ use App\Test;
 	<div class="clear"></div>
 		</div>
 		<?php 
-		$t = new Test()
+		$msg = new Home("construction");
+		$m = $msg->getMessage();
+		echo $m;
 		 ?>
 		 	<script src="public/js/index.js"></script>
 
