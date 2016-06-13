@@ -1,7 +1,10 @@
 <?php namespace App\Controllers;
 
+use App\Lib\Curl;
+
 class HomeController {
 	private $msg;
+    private $extracted = array();
 	function __construct($msg = null) {
 		 $this->msg = $msg;
 	}
@@ -16,9 +19,25 @@ class HomeController {
 
 	public function getIntroduction($opt) {
 		if($opt === 1) {
-			return "My name is Mark O Grady. I am a recent Computer Science graduate. Also first and foremost, I am very passionate	about sofware development. I find it absolutely fascinating that almost anything is possible, with the implementation of a bit of code.";
-		}
-		
+            return "";
+        }
 	}
+
+    public function getCurlData() {
+        $curlData = new Curl();
+        $i = 0;
+        $val =  $curlData->getCurlData("https://api.github.com/users/markogrady1/repos?sort=updated");
+
+        if($val) {
+            foreach($val as $item) {
+                $this->extracted[$i]["name"] = $item['name'];
+                $this->extracted[$i]["fullname"] = $item['full_name'];
+                $this->extracted[$i++]["html_url"] = $item['html_url'];
+            }
+
+        }
+
+        return $this->extracted;
+    }
 }
 

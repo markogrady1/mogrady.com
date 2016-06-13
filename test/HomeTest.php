@@ -8,10 +8,10 @@ class HomeTest extends \PHPUnit_Framework_TestCase {
     
     public function testHomeController() {
         $this->homeValue = new Home("construction");
-        $actual = $this->homeValue->getMessage();
+        $actual = $this->homeValue->getState();
         $this->assertEquals("<br><br><h1 style='text-align:center'>This site is under construction.</h1>", $actual);
         $this->homeValue = new Home();
-        $actual = $this->homeValue->getMessage();
+        $actual = $this->homeValue->getState();
         $this->assertEquals("", $actual);
     }
   

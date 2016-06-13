@@ -177,6 +177,18 @@ img.main-home-img {
 	clear: both;
 }
 
+.repo-list {
+    width: 60%;
+    margin: 0 auto;
+    list-style: none;
+    padding: 0;
+
+}
+
+.repo-list li {
+    font-size: 1.2em;
+}
+
 /*///////////////  RESPONSIVE STYLES  //////////////////////////*/
 @media only screen and (min-width : 769px) and (max-width : 1408px){
 	.intro-wrap {

@@ -1,8 +1,9 @@
 <?php 
 require __DIR__.'/vendor/autoload.php';
 
-use App\Controllers\HomeController as Home;
-$msg = new Home("construction");
+use App\Controllers\HomeController;
+use App\Lib\Curl;
+$msg = new HomeController("construction");
 ?>
 <html>
 <head>
@@ -44,19 +45,25 @@ $msg = new Home("construction");
 				<img src="public/img/moi_pic.jpg" alt="" class="my-image"/>
 			</div>
 			<div class="set-2">
-				<div class="intro"><p class="intro-para"><?php
-				
-				echo $msg->getIntroduction(1);
-				
-				?></p><p class="intro-para">I am currently freelancing my services on various projects. I am also a Git fanatic, and my acccount can be found <a href="https://github.com/markogrady1" target="__blank">here </a>on GitHub.</p></div>
+				<div class="intro"><p class="intro-para">My name is Mark O Grady. I am a recent Computer Science graduate. Also first and foremost, I am very passionate	about sofware development. I find it absolutely fascinating that almost anything is possible, with the implementation of a bit of code.</p><p class="intro-para">I am currently freelancing my services on various projects. I am also a Git fanatic, and my acccount can be found <a href="https://github.com/markogrady1" target="__blank">here </a>on GitHub.</p></div>
 			</div>
 	<div class="clear"></div>
 		</div>
-		<?php 
-		
-		$m = $msg->getMessage();
-		echo $m;
+        <div><ul class="repo-list">
+                <h2>GitHub repos</h2>
+		<?php
+
+		$m = $msg->getState();
+		$repoData = $msg->getCurlData();
+        $str = "";
+        foreach($repoData as $key => $el) {
+           $str = "<a target=__blank href=" .$repoData[$key]["html_url"] . ">" . $repoData[$key]["name"]."</a>"; ?>
+
+            <li><?php echo $str ?></li>
+       <?php }
+//        echo $str
 		 ?>
+            </ul></div>
 		 	<script src="public/js/index.js"></script>
 
 </body>
