@@ -10,9 +10,8 @@ class Plugin extends Curl{
     private $repoAmount;
     private $title;
 
-    public function __construct($username, $num, $title) {
-        $conf = new Config();
-        $this->url = "https://api.github.com/users/" .$username . "/repos?client_id=" . ID . "&client_secret=" . SEC ."&sort=updated";
+    public function __construct($username, $num, $title, Config $config = null) {
+        $this->configureURL($config, $username);
         $this->repoAmount = $num;
         $this->title = $title;
         $this->curl = new Curl();
@@ -23,14 +22,17 @@ class Plugin extends Curl{
         $i = 0;
         if($isArray) {
             if($val) {
+                $keys = array("name", "full_name", "language", "fork", "html_url", "avatar_url");
+
                 foreach($val as $item) {
-                    $this->extracted[$i]["name"] = $item['name'];
-                    $this->extracted[$i]["fullname"] = $item['full_name'];
-                    $this->extracted[$i]["language"] = $item['language'];
-                    $this->extracted[$i]["fork"] = $item['fork'];
-                    $this->extracted[$i]["avatar_url"] = $item["owner"]["avatar_url"];
-                    $this->extracted[$i++]["html_url"] = $item['html_url'];
+                    foreach($keys as $option) {
+                        $this->extracted[$i][$option] = $option != "avatar_url"
+                            ? $this->extracted[$i][$option] = $item[$option]
+                            : $this->extracted[$i][$option] = $item["owner"][$option];
+                    }
+                    $i++;
                 }
+
 
             }
             $this->buildWidgetString();
@@ -51,6 +53,12 @@ class Plugin extends Curl{
 
     }
 
+    public function configureURL($config, $username) {
+        $id = isset($config) ? ID : "";
+        $sec = isset($config) ? SEC : "";
+        $this->url = "https://api.github.com/users/" .$username . "/repos?client_id=" . $id . "&client_secret=" . $sec ."&sort=updated";
+    }
+
     public function prependOcticon() {
         $this->widgetStr = "<link rel='stylesheet'  href=https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.css
             >" . $this->widgetStr;
@@ -60,9 +68,10 @@ class Plugin extends Curl{
         $this->extracted = array_slice($this->extracted, 0, $this->repoAmount);
         if(!is_string($this->extracted)) {
             foreach($this->extracted as $key => $value) {
+                $itemClass = $key == sizeof($this->extracted)-1 ? "last-item" : "";
                 $icon = $this->extracted[$key]["fork"] == true ? 'octicon octicon-repo-forked icon' : 'octicon octicon-repo icon';
                 $this->widgetStr .= "<a target=__blank href=" . $this->extracted[$key]["html_url"] .
-                    "><li><span class='" . $icon . "'></span>" . $this->extracted[$key]["name"]."" .
+                    "><li class=" . $itemClass . "><span class='" . $icon . "'></span>" . $this->extracted[$key]["name"]."" .
                     "<span class='language'>" .$this->extracted[$key]["language"] . "</span></li></a>";
 
             }
