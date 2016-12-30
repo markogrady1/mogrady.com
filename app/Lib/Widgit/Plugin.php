@@ -1,4 +1,4 @@
-<?php namespace App\Lib;
+<?php namespace App\Lib\Widgit;
 
 use App\Lib\Config\Config;
 

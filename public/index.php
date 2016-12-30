@@ -1,14 +1,10 @@
 <?php
-require __DIR__.'/vendor/autoload.php';
-
-
 use App\Controllers\HomeController;
 
 use App\Lib\Widgit\Plugin;
 use App\Lib\Config\Config;
 
 $msg = new Plugin("markogrady1", 15, "My Repos", new Config());
-
 ?>
 <html>
 <head>
@@ -49,10 +45,10 @@ $msg = new Plugin("markogrady1", 15, "My Repos", new Config());
     &nbsp; <h1 class="whoami">Who Am I </h1>
     <div class="intro-wrap">
         <div class="set-1">
-            <img src="public/img/moi.png" alt="" class="my-image"/>
+            <img src="public/img/moi_pic.jpg" alt="" class="my-image"/>
         </div>
         <div class="set-2">
-            <div class="intro"><p class="intro-para">My name is Mark O Grady. I am a recent Computer Science graduate. First and foremost, I am very passionate about sofware development. I find it absolutely fascinating that almost anything is possible, with the implementation of a bit of code.</p><p class="intro-para">I am currently freelancing my services on various projects. I am also a Git fanatic, and some of the repositories in my GitHub account can be seen below.</p></div>
+            <div class="intro"><p class="intro-para">My name is Mark O Grady. I am a recent Computer Science graduate. First and foremost, I am very passionate	about sofware development. I find it absolutely fascinating that almost anything is possible, with the implementation of a bit of code.</p><p class="intro-para">I am currently freelancing my services on various projects. I am also a Git fanatic, and some of the repositories in my GitHub account can be seen below.</p></div>
         </div>
         <div class="clear"></div>
 
